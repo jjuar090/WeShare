@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    Threads
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Threads</h1>
+    <form method="get" action="{% url 'search_for_thread' %}">
+        <input type="text" name="search" placeholder="Search threads" value="{{ request.GET.search }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <ul class="list-group mt-3">
+        {% for thread in threads %}
+        <li class="list-group-item">
+            <a href="{% url 'thread_detail' slug=thread.slug %}">{{ thread.title }}</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No threads found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

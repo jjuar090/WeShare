@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    New Thread
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">Create a New Thread</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Create Thread</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

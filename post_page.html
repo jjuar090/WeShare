@@ -1,0 +1,24 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    {{ thread.title }}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">{{ thread.title }}</h1>
+        <a href="{% url 'new_post' thread_slug=thread.slug %}" class="btn btn-primary mb-3">New Post</a>
+        <h2>Posts</h2>
+        <ul class="list-group">
+            {% for post in posts %}
+            <li class="list-group-item">
+                <a href="{% url 'post_detail' slug=post.slug %}">
+                    {{ post.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
